@@ -1,0 +1,30 @@
+<div class="select_container">
+    <label *ngIf="Label" class="select_label">{{ Label }}</label>
+    <div class="fake_select_container" #fake_select_container>
+            <button class="select_button" (click)="showOptions($event)">
+                {{ value?.name || 'Select and option'}}
+                <span class="material-symbols-outlined select_arrow">
+                    expand_all
+                </span>
+            </button>
+        <div class="options_container" *ngIf="isOptionsVisibles">
+            <ul>
+                <li 
+                    class="option" 
+                    *ngFor="let option of OptionsData" 
+                    (click)="selectOption(option)"
+                    [ngClass]="{'selectedOption': value?.value == option.value}"
+                    >
+                    <div class="item_container">
+                        <span class="statusDot" [ngClass]="option.status == 'KO' ? 'KODot' : 'OKDot'">
+                        </span>
+                        <span class="option_name">{{ option.name }}</span>
+                        <span class="material-symbols-outlined check">
+                            done
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
