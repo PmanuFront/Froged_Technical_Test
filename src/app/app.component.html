@@ -1,9 +1,12 @@
 <div class="app-container">
-  <form>
-    <app-select [OptionsData]="options" [BorderColor]="''" [Label]="'Etiqueta'" [DefaultValue]="{
+  <form [formGroup]="form1" (ngSubmit)="showValue()">
+    <froged-select [OptionsData]="options" [BorderColor]="''" [Label]="'Etiqueta'" [DefaultValue]="{
       value: 1,
       name: 'Sort by popularity',
       status: 'OK'
-    }"></app-select>
+    }" formControlName="select"/>
+    <button type="submit">submit1</button>
   </form>
+
+  <button (click)="setSelectValue()">Set value</button>
 </div>

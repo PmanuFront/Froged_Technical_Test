@@ -2,7 +2,7 @@
     <label *ngIf="Label" class="select_label">{{ Label }}</label>
     <div class="fake_select_container" #fake_select_container>
             <button class="select_button" (click)="showOptions($event)">
-                {{ value?.name || 'Select and option'}}
+                {{ selectedOption?.name || 'Select and option'}}
                 <span class="material-symbols-outlined select_arrow">
                     expand_all
                 </span>
@@ -13,13 +13,13 @@
                     class="option" 
                     *ngFor="let option of OptionsData" 
                     (click)="selectOption(option)"
-                    [ngClass]="{'selectedOption': value?.value == option.value}"
+                    [ngClass]="{'selectedOption': selectedOption?.value == option.value}"
                     >
                     <div class="item_container">
                         <span class="statusDot" [ngClass]="option.status == 'KO' ? 'KODot' : 'OKDot'">
                         </span>
                         <span class="option_name">{{ option.name }}</span>
-                        <span class="material-symbols-outlined check">
+                        <span *ngIf="selectedOption?.value == option.value" class="material-symbols-outlined check">
                             done
                         </span>
                     </div>
