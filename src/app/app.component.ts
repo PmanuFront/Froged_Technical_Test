@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { options } from './mocks/SelectData';
 import { OptionsModel } from './models/OptionsModel';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -8,31 +8,25 @@ import { FormBuilder, Validators } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'Froged_Select_Component';
+export class AppComponent {
+  public options: OptionsModel[] = options;
 
-  
   constructor(private fb: FormBuilder) {}
   
-  
-  public ngOnInit(): void {
-    console.log('Init')
-  }
-  
-  form1 = this.fb.group({
-    select: [60, Validators.required]
+  form = this.fb.group({
+    select: ['' as any, Validators.required]
   });  
 
   public showValue(): void {
-    console.log('formulario', this.form1);
-    console.log('valor del form control', this.form1.controls['select'].value);
+    console.log('valor del form control', this.form.controls['select'].value);
   }
 
   public setSelectValue(): void {
-    console.log('set value')
-    this.form1.controls['select'].setValue(2);
-    console.log(this.form1)
+    this.form.controls['select'].setValue(2);
+    console.log(this.form)
   }
 
-  public options: OptionsModel[] = options;
+  public enableDisableSelect(): void {
+    this.form.controls['select'].disabled ? this.form.controls['select'].enable() : this.form.controls['select'].disable();
+  }
 }

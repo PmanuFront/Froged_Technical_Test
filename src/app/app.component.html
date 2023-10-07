@@ -1,12 +1,13 @@
 <div class="app-container">
-  <form [formGroup]="form1" (ngSubmit)="showValue()">
+  <form [formGroup]="form" (ngSubmit)="showValue()">
     <froged-select [OptionsData]="options" [BorderColor]="''" [Label]="'Etiqueta'" [DefaultValue]="{
       value: 1,
       name: 'Sort by popularity',
       status: 'OK'
     }" formControlName="select"/>
-    <button type="submit">submit1</button>
+    <button type="submit">Submit</button>
   </form>
 
-  <button (click)="setSelectValue()">Set value</button>
+  <button (click)="setSelectValue()">Set wrong value</button>
+  <button (click)="enableDisableSelect()" class="enable_button">{{form.controls['select'].disabled ? 'Enable' : 'Disable'}}</button>
 </div>

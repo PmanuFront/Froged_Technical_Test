@@ -24,6 +24,8 @@
         }
     }
     .options_container {
+        max-height: 31vh;
+        overflow: auto;
         border: 1px solid #D1D5DB;
         border-radius: 5px;
         margin-top: 0.5rem;
@@ -83,15 +85,11 @@
         color: #655DE8;
     }
 
-    .check2 {
-        color: white;
-    }
-
-    .prueba{
-        background-color: #F3F4F6;
+    .selectDisabled {
+        background-color: #D1D5DB;
     }
 }
 
-.ng-invalid .select_container .fake_select_container .select_button{
-    border: 2px solid red;
+.invalid{
+    border: 2px solid red !important;
 }

@@ -1,7 +1,7 @@
 <div class="select_container">
     <label *ngIf="Label" class="select_label">{{ Label }}</label>
     <div class="fake_select_container" #fake_select_container>
-            <button class="select_button" (click)="showOptions($event)">
+            <button class="select_button" (click)="showOptions($event)" [disabled]="disabled" [ngClass]="{'selectDisabled': disabled, 'invalid': isInvalid}">
                 {{ selectedOption?.name || 'Select and option'}}
                 <span class="material-symbols-outlined select_arrow">
                     expand_all
