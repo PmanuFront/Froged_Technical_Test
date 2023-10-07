@@ -37,6 +37,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor, Validator 
 
   touched = false;
   disabled = false;
+  isInvalid = false;
 
   constructor() {
   }
@@ -102,13 +103,17 @@ export class SelectComponent implements OnInit, ControlValueAccessor, Validator 
   validate(control: AbstractControl): ValidationErrors | null {
     const option = control.value;
     if (typeof(option) !== 'object') {
+      this.isInvalid = true;
       console.error('Setted value is not valid: ', control);
       return {
         mustBeAnObject: {
           option
         }
       };
-    } else return null;
+    } else{
+      this.isInvalid = false;
+      return null
+    };
   }
 
   // registerOnValidatorChange(value: any): ValidationErrors | null {

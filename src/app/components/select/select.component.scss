@@ -90,10 +90,16 @@
     }
 
     .prueba{
+        
         background-color: #F3F4F6;
+    }
+    .selectDisabled {
+        background-color: #D1D5DB;
+    }
+
+    .invalid{
+        border: 2px solid red !important;
     }
 }
 
-.ng-invalid .select_container .fake_select_container .select_button{
-    border: 2px solid red;
-}
+
