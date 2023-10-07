@@ -1,11 +1,14 @@
 import { Component, Input, OnInit, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, AbstractControl, ValidationErrors } from '@angular/forms';
+
 import { OptionsModel } from 'src/app/models/OptionsModel';
 
 @Component({
   selector: 'froged-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
+  standalone: true,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -17,6 +20,9 @@ import { OptionsModel } from 'src/app/models/OptionsModel';
       multi: true,
       useExisting: SelectComponent
     }
+  ],
+  imports: [
+    CommonModule
   ]
 })
 
@@ -24,7 +30,6 @@ export class SelectComponent implements OnInit, ControlValueAccessor, Validator 
   @ViewChild('fake_select_container') miDiv!: ElementRef;
   @Input() OptionsData: OptionsModel[] = [];
   @Input() DefaultValue?: OptionsModel;
-  @Input() BorderColor: string = '';
   @Input() Label?: string;
 
   public selectedOption: OptionsModel | undefined;

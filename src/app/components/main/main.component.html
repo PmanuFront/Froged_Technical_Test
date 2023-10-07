@@ -1,0 +1,12 @@
+<div class="app-container">
+    <form [formGroup]="form1" (ngSubmit)="showValue()">
+      <froged-select [OptionsData]="options" [Label]="'Etiqueta'" [DefaultValue]="{
+        value: 1,
+        name: 'Sort by popularity',
+        status: 'OK'
+      }" formControlName="select"/>
+      <button type="submit" class="submit_button">SUBMIT</button>
+    </form>
+  
+    <button (click)="setSelectValue()">SET WRONG VALUE</button>
+</div>
